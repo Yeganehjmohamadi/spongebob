@@ -3,7 +3,12 @@ guid: 1d6674baa08ea8e488afcb25ef563247
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 6336704767357905764, guid: 693878ced88250044b25c3aeca44f13b, type: 3}
+  - spawnPoint: {instanceID: 0}
+  - roomCam: {instanceID: 0}
+  - nameUI: {instanceID: 0}
+  - connectingUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     public float sprintSpeed = 14f;
     public float maxVelocityChange = 10f;
 
+    [Space]
+    public float jumpHeight = 5f;
+
     private Vector2 input;
     private Rigidbody rb;
 
@@ -25,10 +28,22 @@ public class Movement : MonoBehaviour
     {
         input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input.Normalize();
+
+        sprinting = Input.GetButton("Sprint");
+
+        jumping = Input.GetButton("Jump");
+    }
+
+    private void OnTriggerStay(Collider other) {
+        grounded = true;
     }
 
     void FixedUpdate() {
-        
+        if (grounded) {
+            if (jumping) {
+                rb.velocity = new Vector3(rb.velocity.x,jumpHeight,rb.velocity.z);
+            }
+        }
         rb.AddForce(CalculateMovement(sprinting ? sprintSpeed : walkSpeed), ForceMode.VelocityChange);
         grounded = false;
     }
